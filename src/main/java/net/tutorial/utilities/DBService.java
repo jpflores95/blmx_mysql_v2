@@ -12,7 +12,9 @@ public class DBService {
 	Connection dbConnection = null;
 	private PreparedStatement ps = null;
 
-	private DBService() {}
+	private DBService() {
+		createTable();
+	}
 
 	public static DBService getInstance() {
 		return instance;
@@ -20,8 +22,8 @@ public class DBService {
 	
 	public void cleanUp() {
 		try {
-			if (ps != null) {
-				ps.close();
+			if (this.ps != null) {
+				this.ps.close();
 			}
 			if (this.dbConnection != null) {
 				this.dbConnection.close();
@@ -32,7 +34,6 @@ public class DBService {
 	}
 
 	public Connection getConnection() {
-		Connection dbConnection = null;
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -43,16 +44,34 @@ public class DBService {
 		}
 
 		try {
-			
 			EnvVariables envVar = new EnvVariables();
 			Map<String, String> creds = envVar.getCredentials("cleardb");
-			dbConnection = DriverManager.getConnection(creds.get("jdbcUrl"));
+			this.dbConnection = DriverManager.getConnection(creds.get("jdbcUrl"));
 			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			return null;
 		}
 
-		return dbConnection;
+		return this.dbConnection;
 	}
+	
+	private void createTable() {
+		this.dbConnection = getConnection();
+
+		String createTableSQL = "CREATE TABLE IF NOT EXISTS `contacts` (" + "`_id` int(11) NOT NULL AUTO_INCREMENT,"
+				+ "`name` varchar(45) DEFAULT NULL," + "`email` varchar(45) DEFAULT NULL,"
+				+ "`mobile` varchar(45) DEFAULT NULL," + "PRIMARY KEY (`_id`)"
+				+ ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
+		try {
+			this.ps = this.dbConnection.prepareStatement(createTableSQL);
+			this.ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			cleanUp();
+		}
+	}
+	
 }

@@ -17,13 +17,12 @@ public class DataService {
 	private PreparedStatement ps = null;
 	
 	public DataService() {
-		dbService = DBService.getInstance();
-		createTable();
+		this.dbService = DBService.getInstance();
 	}
 	
 	public ArrayList<Map<String, Object>> allRecords() {
 
-		dbConnection = dbService.getConnection();
+		this.dbConnection = this.dbService.getConnection();
 
 		ArrayList<Map<String, Object>> records = new ArrayList<Map<String, Object>>();
 		Map<String, Object> record = null;
@@ -32,8 +31,8 @@ public class DataService {
 		ResultSet rs = null;
 
 		try {
-			ps = this.dbConnection.prepareStatement(sSQL);
-			rs = ps.executeQuery(sSQL);
+			this.ps = this.dbConnection.prepareStatement(sSQL);
+			rs = this.ps.executeQuery(sSQL);
 
 			while (rs.next()) {
 				record = new HashMap<String, Object>();
@@ -46,55 +45,37 @@ public class DataService {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			dbService.cleanUp();
+			this.dbService.cleanUp();
 		}
 
 		return records;
 	}
 	
-	private void createTable() {
-		dbConnection = dbService.getConnection();
-
-		String createTableSQL = "CREATE TABLE IF NOT EXISTS `contacts` (" + "`_id` int(11) NOT NULL AUTO_INCREMENT,"
-				+ "`name` varchar(45) DEFAULT NULL," + "`email` varchar(45) DEFAULT NULL,"
-				+ "`mobile` varchar(45) DEFAULT NULL," + "PRIMARY KEY (`_id`)"
-				+ ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-
-		try {
-			ps = dbConnection.prepareStatement(createTableSQL);
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			dbService.cleanUp();
-		}
-	}
-	
 	public void deleteRecord(int id) {
-		dbConnection = dbService.getConnection();
+		this.dbConnection = this.dbService.getConnection();
 
 		try {
 			String sSQL = "DELETE FROM `contacts` WHERE _id=?";
-			ps = dbConnection.prepareStatement(sSQL);
-			ps.setInt(1, id);
-			ps.executeUpdate();
+			this.ps = this.dbConnection.prepareStatement(sSQL);
+			this.ps.setInt(1, id);
+			this.ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			dbService.cleanUp();
+			this.dbService.cleanUp();
 		}
 	}
 	
 	public Map<String, Object> findRecord(int id) { 
-		dbConnection = dbService.getConnection();
+		this.dbConnection = this.dbService.getConnection();
 		
 		Map<String, Object> record = new HashMap<String, Object>();
 		ResultSet rs = null;
 		
 		try {
 			String sSQL = "SELECT * FROM `contacts` WHERE _id=?";
-			ps = this.dbConnection.prepareStatement(sSQL);
-			ps.setInt(1, id);
+			this.ps = this.dbConnection.prepareStatement(sSQL);
+			this.ps.setInt(1, id);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				record.put("_id", rs.getInt("_id"));
@@ -107,13 +88,13 @@ public class DataService {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			dbService.cleanUp();
+			this.dbService.cleanUp();
 		}
 		return record;
 	}
 	
 	public void updateRecord(int transaction, Map<String, Object> record) {
-		dbConnection = dbService.getConnection();
+		this.dbConnection = this.dbService.getConnection();
 
 		String sSQL = null;
 
@@ -124,21 +105,19 @@ public class DataService {
 		}
 
 		try {
-			ps = this.dbConnection.prepareStatement(sSQL);
-			ps.setString(1, (String) record.get("name"));
-			ps.setString(2, (String) record.get("email"));
-			ps.setString(3, (String) record.get("mobile"));
+			this.ps = dbConnection.prepareStatement(sSQL);
+			this.ps.setString(1, (String) record.get("name"));
+			this.ps.setString(2, (String) record.get("email"));
+			this.ps.setString(3, (String) record.get("mobile"));
 			if (transaction == UPDATE_RECORD) {
-				ps.setInt(4, (int) record.get("_id"));
+				this.ps.setInt(4, (int) record.get("_id"));
 			}
-			ps.executeUpdate();
+			this.ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			dbService.cleanUp();
+			this.dbService.cleanUp();
 		}
 	}
-
-		
 	
 }
