@@ -29,9 +29,8 @@
 					<td><c:out value="${contact.email}" /></td>
 					<td><c:out value="${contact.mobile}" /></td>
 					<td>
-						<a href="home?action=edit&id=<c:out value="${contact._id}" /><span class="glyphicons glyphicons-pencil" style="color:green"></span></a>
-						<a href="home?action=delete&id=<c:out value="${contact._id}" /><span class="glyphicons glyphicons-delete" style="color:red"></span></a>
-					</td>
+						<<a href="home?action=edit&id=<c:out value="${contact._id}" />">Edit</a>
+						<a href="home?action=delete&id=<c:out value="${contact._id}" />">Delete</a></td>
 					<td>
 					<form action="home" name="t2s" method="POST">
 							<input type="submit" value="Button" button type = "submit"class="btn btn-primary"/>"></input>
