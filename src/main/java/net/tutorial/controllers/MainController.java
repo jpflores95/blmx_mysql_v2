@@ -56,7 +56,8 @@ public class MainController extends HttpServlet {
 		String name = req.getParameter("name");
 		String email = req.getParameter("email");
 		String mobile = req.getParameter("mobile");
-
+	
+		if(req.getParameter("db")!= null){
 		Map<String, Object> record = new HashMap<String, Object>();
 		ds = new DataService();
 		
@@ -70,13 +71,18 @@ public class MainController extends HttpServlet {
 			record.put("_id", Integer.parseInt(id));
 			ds.updateRecord(DataService.UPDATE_RECORD, record);
 		}
+		}
+		
 
-		
-	
-		
+		else if(request.getParameter("t2s") != null){
 		TextToSpeechService service = new TextToSpeechService();
 		String text = req.getParameter("name");
 		service.getAudio(text, resp);
+			
+		}
+	
+		
+		
 		
 	}
 

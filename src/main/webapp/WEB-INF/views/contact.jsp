@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h3><c:if test="${empty document}">New</c:if> Contact Form</h3>
-	<form action="home" method="POST">
+	<form action="home" name="db" method="POST">
 		<button type="submit">Save</button>
 		<a href="home">Cancel</a>
 		<hr>

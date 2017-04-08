@@ -30,8 +30,8 @@
 						<a href="home?action=delete&id=<c:out value="${contact._id}" />">Delete</a>
 					</td>
 					<td>
-					<form action="home" method="POST">
-							<input type="submit" value="<c:out value="${contact.name}"/>">Button</input>
+					<form action="home" name="t2s" method="POST">
+							<input type="submit" value="<c:out value="${contact.name}"/>"></input>
 					</form>
 					</td>
 				</tr>
