@@ -22,7 +22,7 @@
 		<tbody>
 			<c:forEach items="${contacts}" var="contact">
 				<tr>
-					<td><c:out name ="text" value="${contact.name}" /></td>
+					<td><c:out value="${contact.name}" /></td>
 					<td><c:out value="${contact.email}" /></td>
 					<td><c:out value="${contact.mobile}" /></td>
 					<td>

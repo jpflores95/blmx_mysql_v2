@@ -75,7 +75,7 @@ public class MainController extends HttpServlet {
 	
 		
 		TextToSpeechService service = new TextToSpeechService();
-		String text = req.getParameter("text");
+		String text = req.getParameter("name");
 		service.getAudio(text, resp);
 		
 	}
