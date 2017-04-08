@@ -32,7 +32,7 @@
 					</td>
 					<td>
 						<form action="home" method="POST">
-							<input type= "submit" value="<c:out value="${contact.name}""/>Button</input>
+							<input type="submit" value="<c:out value="${contact.name}"/>">Button</input>
 						</form>
 					</td>
 				</tr>
