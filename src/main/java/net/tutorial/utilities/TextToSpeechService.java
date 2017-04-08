@@ -26,7 +26,7 @@ public class TextToSpeechService {
 
 	public void getAudio(String text, HttpServletResponse resp) throws IOException {
 		
-		if(text = null)
+		if(text == null)
 			text="";
 			
 		resp.setContentType("application/octet-stream");
