@@ -74,7 +74,7 @@ public class MainController extends HttpServlet {
 		}
 		
 
-		else if(request.getParameter("t2s") != null){
+		else if(req.getParameter("t2s") != null){
 		TextToSpeechService service = new TextToSpeechService();
 		String text = req.getParameter("name");
 		service.getAudio(text, resp);
