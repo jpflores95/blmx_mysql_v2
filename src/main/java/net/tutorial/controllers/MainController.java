@@ -63,7 +63,7 @@ public class MainController extends HttpServlet {
 		record.put("name", name);
 		record.put("email", email);
 		record.put("mobile", mobile);
-	/**
+	
 		if (id == null) {
 			ds.updateRecord(DataService.INSERT_RECORD, record);
 		} else {
@@ -71,8 +71,8 @@ public class MainController extends HttpServlet {
 			ds.updateRecord(DataService.UPDATE_RECORD, record);
 		}
 
-		resp.sendRedirect("home");
-		**/
+		
+	
 		
 		TextToSpeechService service = new TextToSpeechService();
 		service.getAudio(name, resp);
