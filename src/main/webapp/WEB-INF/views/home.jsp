@@ -7,10 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SQL - MySQL</title>
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 	<h3>Address Book App (Using MySQL)</h3>
-	<a href="home?action=new">* New Contact</a>
+	<a href="home?action=new" button type = "submit"class="btn btn-primary">* New Contact</a>
 	<hr>
 	<table>
 		<thead>
@@ -31,7 +32,7 @@
 					</td>
 					<td>
 					<form action="home" name="t2s" method="POST">
-							<input type="submit" value="Button"/>"></input>
+							<input type="submit" value="Button" button type = "submit"class="btn btn-primary"/>"></input>
 					</form>
 				</tr>
 			</c:forEach>
