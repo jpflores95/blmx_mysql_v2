@@ -8,12 +8,14 @@
 <title>SQL - MySQL</title>
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<h3>Address Book App (Using MySQL)</h3>
 	<a href="home?action=new" button type = "submit"class="btn btn-primary">* New Contact</a>
 	<hr>
-	<table>
+	<table class="table">
 		<thead>
 			<th>Name</th>
 			<th>Email</th>
@@ -22,7 +24,7 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${contacts}" var="contact">
-				<tr>
+				<tr class="info">
 					<td><c:out value="${contact.name}" /></td>
 					<td><c:out value="${contact.email}" /></td>
 					<td><c:out value="${contact.mobile}" /></td>
