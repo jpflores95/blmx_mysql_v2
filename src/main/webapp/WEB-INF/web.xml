@@ -4,8 +4,4 @@
 	<welcome-file-list>
 		<welcome-file>/home</welcome-file>
 	</welcome-file-list>
-	<servlet>
-	<servlet-name>home</servlet-name>
-	<jsp-file>/home.jsp</jsp-file>
-	</servlet>
 </web-app>
