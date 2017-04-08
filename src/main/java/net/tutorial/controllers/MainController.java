@@ -71,6 +71,7 @@ public class MainController extends HttpServlet {
 			record.put("_id", Integer.parseInt(id));
 			ds.updateRecord(DataService.UPDATE_RECORD, record);
 		}
+		dispatcher.forward(req, resp);
 		}
 		
 
@@ -80,10 +81,6 @@ public class MainController extends HttpServlet {
 		service.getAudio(text, resp);
 			
 		}
-	
-		
-		
-		
 	}
 
 }
