@@ -27,12 +27,12 @@
 					<td><c:out value="${contact.mobile}" /></td>
 					
 					<td>
-						<a href="home?action=edit&id=<c:out value="${contact._id}" />">Edit</a>
+						<a href="home?action=edit&id=<c:out value="${contact._id}"" />">Edit</a>
 						<a href="home?action=delete&id=<c:out value="${contact._id}" />">Delete</a>
 					</td>
 					<td>
 						<form action="home" method="POST">
-							<input type= "submit" value="Convert">
+							<input type= "submit" value="<c:out value="${contact.name}""/>Button</input>
 						</form>
 					</td>
 				</tr>
