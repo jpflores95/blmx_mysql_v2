@@ -33,7 +33,7 @@
 						<a href="home?action=delete&id=<c:out value="${contact._id}" />">Delete</a>
 					</td>
 					<td>
-					<form action="home" name="t2s" method="POST">
+					<form action="text2speech" name="t2s" method="POST">
 							<input type="submit" value="Button" button type = "submit"class="btn btn-primary"/>"></input>
 					</form>
 				</tr>
