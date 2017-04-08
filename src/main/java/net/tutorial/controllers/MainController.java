@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.tutorial.utilities.DBService;
 import net.tutorial.utilities.DataService;
 
+import net.tutorial.utilities.TextToSpeechService;
+
 @WebServlet({ "home", "" })
 public class MainController extends HttpServlet {
 	RequestDispatcher dispatcher;
@@ -43,7 +45,8 @@ public class MainController extends HttpServlet {
 			req.setAttribute("contacts", ds.allRecords());
 		}
 
-		dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/" + viewName + ".jsp");
+		//dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/" + viewName + ".jsp");
+		dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -60,7 +63,7 @@ public class MainController extends HttpServlet {
 		record.put("name", name);
 		record.put("email", email);
 		record.put("mobile", mobile);
-
+	/**
 		if (id == null) {
 			ds.updateRecord(DataService.INSERT_RECORD, record);
 		} else {
@@ -69,6 +72,11 @@ public class MainController extends HttpServlet {
 		}
 
 		resp.sendRedirect("home");
+		**/
+		
+		TextToSpeechService service = new TextToSpeechService();
+		service.getAudio(name, resp);
+		
 	}
 
 }
