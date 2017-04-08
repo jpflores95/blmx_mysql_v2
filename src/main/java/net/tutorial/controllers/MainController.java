@@ -45,8 +45,8 @@ public class MainController extends HttpServlet {
 			req.setAttribute("contacts", ds.allRecords());
 		}
 
-		//dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/" + viewName + ".jsp");
-		dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp");
+		dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/views/" + viewName + ".jsp");
+		
 		dispatcher.forward(req, resp);
 	}
 
