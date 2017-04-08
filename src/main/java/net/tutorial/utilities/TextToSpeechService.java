@@ -25,6 +25,10 @@ public class TextToSpeechService {
 	}
 
 	public void getAudio(String text, HttpServletResponse resp) throws IOException {
+		
+		if(text = null)
+			text="";
+			
 		resp.setContentType("application/octet-stream");
 		resp.setHeader("Content-Disposition","attachment;filename=output.wav");
 		
