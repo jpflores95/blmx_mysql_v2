@@ -81,6 +81,7 @@ public class MainController extends HttpServlet {
 		service.getAudio(text, resp);
 			
 		}
+		dispatcher.forward(req, resp);
 	}
 
 }
