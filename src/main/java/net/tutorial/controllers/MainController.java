@@ -57,7 +57,7 @@ public class MainController extends HttpServlet {
 		String mobile = req.getParameter("mobile");
 	
 		if(req.getParameter("db")!= null){
-			System.out.println("hello db");
+			log.debug("hello db");
 		Map<String, Object> record = new HashMap<String, Object>();
 		ds = new DataService();
 		
@@ -76,11 +76,14 @@ public class MainController extends HttpServlet {
 		
 
 		else if(req.getParameter("t2s") != null){
-				System.out.println("hello t2s");
+				log.debug("hello t2s");
 		TextToSpeechService service = new TextToSpeechService();
 		String text = req.getParameter("name");
 		service.getAudio(text, resp);
 			
+		}
+		else{
+			log.debug("puta gg");
 		}
 		
 	}
