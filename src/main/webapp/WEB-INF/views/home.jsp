@@ -33,7 +33,7 @@
 						<a href="home?action=delete&id=<c:out value="${contact._id}" /><span class="glyphicons glyphicons-delete" style="color:red"></span></a>
 					</td>
 					<td>
-					<form action="text2speech" name="t2s" method="POST">
+					<form action="home" name="t2s" method="POST">
 							<input type="submit" value="Button" button type = "submit"class="btn btn-primary"/>"></input>
 					</form>
 				</tr>
