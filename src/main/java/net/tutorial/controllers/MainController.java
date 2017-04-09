@@ -65,7 +65,7 @@ public class MainController extends HttpServlet {
 		record.put("email", email);
 		record.put("mobile", mobile);
 	
-		if (id == null) {
+		if (id != null) {
 			ds.updateRecord(DataService.INSERT_RECORD, record);
 		} else {
 			record.put("_id", Integer.parseInt(id));
