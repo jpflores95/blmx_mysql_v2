@@ -71,7 +71,7 @@ public class MainController extends HttpServlet {
 			record.put("_id", Integer.parseInt(id));
 			ds.updateRecord(DataService.UPDATE_RECORD, record);
 		}
-		resp.sendRedirect("home");
+		resp.sendRedirect("/WEB-INF/views/home.jsp");
 		}
 		
 
